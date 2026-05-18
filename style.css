@@ -1,0 +1,2043 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.top p {
+    color: #ffffff;
+    font-weight: 400;
+    text-align: center;
+    background: #262626;
+    padding: 16px 12px;
+    margin: 0;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: 0.07px;
+}
+
+.navbar {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1190px, calc(100% - 32px));
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #262626;
+    border-radius: 35px;
+    padding: 15px 20px;
+}
+
+.logo img {
+    display: block;
+    max-width: 66px;
+    width: auto;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 65px;
+    margin-right: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    transition: 0.3s;
+    font-family: "Montserrat", sans-serif;
+}
+
+.join-btn {
+    padding: 14px 26px;
+    border: none;
+    background: #ff6a00;
+    color: black !important;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem !important;
+    margin-left: 1rem;
+}
+
+.join-btn:hover {
+    background: #ff4500;
+}
+
+.content {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    max-width: 900px;
+    margin: 12% auto 0;
+    padding: 0 20px;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    position: relative;
+    z-index: 2;
+}
+
+.element {
+    color: #ff6a00;
+}
+
+
+.timeline-card {
+    position: relative;
+    z-index: 2;
+}
+
+.video {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    min-height: auto;
+    margin: 2rem auto 0;
+    overflow: hidden;
+    padding: 0 20px;
+    box-sizing: border-box;
+    aspect-ratio: 16/9;
+}
+
+#bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.para {
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.para p {
+    color: #858585;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 50px;
+}
+
+
+.para a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: clamp(16px, 3vw, 20px);
+    background-color: #ff6a00;
+    padding: 15px 40px;
+    border-radius: 10px;
+    font-family: "Montserrat", sans-serif;
+    display: inline-block;
+    margin: 20px auto 0;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.para .con {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    margin: 40px auto 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+.marquee-wrapper {
+    position: relative;
+    overflow: hidden;
+    background: #000;
+    padding: 40px 0;
+    margin-bottom: 8%;
+}
+
+/* 🔥 Fade edges (left + right blur effect) */
+.marquee-wrapper::before,
+.marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 40%;
+    /* 👈 your requirement */
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, black, transparent);
+}
+
+.marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, black, transparent);
+}
+
+/* scrolling track */
+.marquee-track {
+    display: flex;
+    gap: 100px;
+    animation: scroll 15s linear infinite;
+}
+
+/* each item */
+.item {
+    min-width: 180px;
+    text-align: center;
+    color: white;
+}
+
+/* NUMBER */
+.item h2 {
+    font-size: 48px;
+    color: white;
+    margin: 0;
+    /* 🔥 remove default margin */
+    line-height: 1;
+    /* tighten spacing */
+}
+
+/* TEXT */
+.item p {
+    font-size: 20px;
+    color: white;
+    margin: 5px 0 0 0;
+    font-family: "Montserrat", sans-serif;
+    /* 🔥 small gap only */
+}
+
+/* animation */
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-150%);
+    }
+}
+
+.benefits strong {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    display: block;
+    margin-top: 10%;
+    font-size: clamp(2rem, 5vw, 70px);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.benefits span {
+    color: #ff6a00;
+}
+
+/* GRID (2 cards per row) */
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+    margin-top: 15px;
+    margin: 15px auto 0;
+    padding: 0 20px;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+/* CARD DESIGN */
+.card {
+    background: #111;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #222;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* ICON */
+.card img {
+    width: 150px;
+    height: 150px;
+
+
+}
+
+/* TEXT */
+.card h3 {
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    margin: 0;
+    font-size: 30px;
+}
+
+.card p {
+    color: #aaa;
+    margin-top: 8px;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+/* 🔥 HOVER EFFECT */
+.card:hover {
+    transform: scale(1.05);
+    border: 1px solid transparent;
+}
+
+/* 🔥 FIRE BORDER EFFECT */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    padding: 2px;
+    background: linear-gradient(45deg, orange, red, orange);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* SHOW BORDER ON HOVER */
+.card:hover::before {
+    opacity: 1;
+}
+
+
+.spot {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 18px;
+    margin-bottom: 150px;
+    position: relative;
+    z-index: 2;
+}
+
+.spot a {
+    color: white;
+    font-weight: 500;
+    font-size: clamp(16px, 3vw, 20px);
+    background-color: rgb(255, 106, 0);
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.process-section {
+    padding: 80px 20px;
+    background: #141414;
+}
+
+.progress-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.title {
+    font-size: clamp(2rem, 6vw, 5rem);
+    /* font-weight: 700; */
+    text-align: center;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    margin-bottom: 10px;
+}
+
+.title span {
+    color: #ff6a00;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 60px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 60px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* vertical line */
+.progress-line {
+    position: absolute;
+    left: 20px;
+    top: 150px;
+    width: 8px;
+    height: 75%;
+    background: #222;
+}
+
+.progress {
+    width: 100%;
+    height: 0;
+    background: #ff6a00;
+    transition: height 0.3s ease;
+    border-radius: 10px;
+    
+}
+
+/* cards */
+.card1 {
+    background: #000000;
+    border-radius: 20px;
+    padding: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.card1:hover {
+    transform: translateY(-5px);
+}
+
+/* big number */
+.number {
+    font-size: clamp(60px, 15vw, 200px);
+    font-weight: 800;
+    background: linear-gradient(YELLOW,#aaa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a,
+button {
+    max-width: 100%;
+}
+
+.price-btn,
+.cta-btn,
+.help-btn,
+.submit-btn {
+    word-wrap: break-word;
+}
+/* text */
+.progress-content h2 {
+    margin: 0;
+    font-size: 30px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.progress-content p {
+    color: #aaa;
+    font-family: "Montserrat", sans-serif;
+}
+
+.progress-spot {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 18px;
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress-spot a {
+    color: white;
+    font-weight: 500;
+    font-size: clamp(16px, 3vw, 20px);
+    background-color: rgb(255, 106, 0);
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+}
+
+.progress-para p {
+    color: white;
+    margin-top: 30px;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.pricing,
+.pricing-section {
+    overflow: visible;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 70px 20px 10px;
+    flex-wrap: wrap;
+    overflow: visible;
+    align-items: stretch;
+}
+
+.card0 {
+    background: linear-gradient(145deg, #111, #000);
+    border-radius: 20px;
+    padding: 60px 35px 45px;
+    width: clamp(280px, 90%, 500px);
+    position: relative;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: visible;
+    height: 100%;
+}
+
+.card0:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px  rgb(255, 106, 0);
+    
+}
+
+.card0 h3 {
+    font-size: 30px;
+    margin-bottom: -40px;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.card0 h1 {
+    font-size: 60px;
+    margin-bottom: -20px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    line-height: 1.3;
+}
+
+.card0 h1 span {
+    font-size: 20px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.sub {
+    color: #888;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+ul li {
+    margin: 22px 0;
+    color: #ccc;
+    position: relative;
+    padding-left: 45px;
+    padding-right: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    background:#ff6a00;
+    border-radius: 50%;
+}
+
+ul li::after {
+    content: "✓";
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    font-size: 14px;
+    color: #000;
+    font-weight: bold;
+}
+
+/* .popular {
+    border: 1px solid #ff6a00;
+} */
+
+.highlight {
+    border: 2px solid #ff6a00;
+}
+
+/* Badge fixed */
+.plan-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ff6a00;
+    color: #000;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.1;
+    z-index: 20;
+}
+
+.plan-badge small {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 3px;
+}
+
+.best-value {
+    padding: 10px 35px;
+}
+
+.price-btn {
+    padding: 15px 35px;
+    border: none;
+    background: #ff6a00;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: clamp(16px, 3vw, 20px);
+    font-family: "Montserrat", sans-serif;
+    margin-top: auto;
+    width: 100%;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.price-btn:hover {
+    background: #00ff66;
+    color: #000;
+}
+
+
+/* PROOF / TESTIMONIALS SECTION */
+
+.proof-section {
+    background: #000;
+    padding: 20px 20px 90px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden;
+    margin-top: 150px;
+}
+
+.proof-container {
+    max-width: 1220px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.proof-title {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 25px;
+    letter-spacing: -2px;
+}
+
+.proof-title span {
+    color: #ff6a00;
+}
+
+.proof-subtitle {
+    color: #8d8d8d;
+    font-size: 20px;
+    line-height: 1.55;
+    margin: 0 0 55px;
+    font-weight: 400;
+}
+
+.proof-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    text-align: left;
+}
+
+.proof-card {
+    background: linear-gradient(145deg, #161616, #080808);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    padding: 38px 26px 35px;
+    min-height: 445px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.proof-user {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.proof-user img,
+.discord-avatar {
+    width: 62px;
+    height: 62px;
+    min-width: 62px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.discord-avatar {
+    background: #5865f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.discord-avatar span {
+    color: #fff;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.proof-user h3 {
+    color: #fff;
+    font-size: 28px;
+    line-height: 1;
+    margin: 0;
+    font-weight: 800;
+}
+
+.proof-user p {
+    color: #fff;
+    font-size: 22px;
+    line-height: 1;
+    margin: 4px 0 0;
+    font-weight: 400;
+}
+
+.stars {
+    color: #ffd21f;
+    font-size: 27px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 1;
+}
+
+.proof-text {
+    color: #8d8d8d;
+    font-size: 19px;
+    line-height: 1.55;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* CTA SECTION */
+
+.cta-section {
+    background: #000;
+    padding: 80px 20px 100px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+
+.cta-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 65px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 22px;
+    letter-spacing: -2px;
+}
+
+.cta-title span {
+    color: #ff6a00;
+}
+
+.cta-subtitle {
+    color: #8d8d8d;
+    font-size: 19px;
+    line-height: 1.55;
+    margin: 0 auto 38px;
+    font-weight: 400;
+}
+
+.cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(280px, 90%, 462px);
+    max-width: 100%;
+    height: 57px;
+    background: #ff6a00;
+    color: #000;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.cta-btn:hover {
+    background: #20c918;
+    transform: translateY(-2px);
+}
+
+/* FAQ SECTION */
+
+.faq-section {
+    background: #000;
+    padding: 40px 20px 90px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.faq-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.faq-title {
+    text-align: center;
+    font-size: 72px;
+    line-height: 0.95;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 45px;
+    letter-spacing: -2px;
+}
+
+.faq-title span {
+    color: #ff6a00;
+}
+
+.faq-list {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.faq-item {
+    background: #161616;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+    margin-bottom: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #ff6a00;
+}
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 25px 24px;
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    color: #fff;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item p {
+    color: #9a9a9a;
+    font-size: 20px;
+    line-height: 1.55;
+    font-weight: 400;
+    margin: 0;
+    padding: 0 58px 25px 24px;
+}
+
+.faq-item p strong {
+    color: #a8a8a8;
+    font-weight: 800;
+}
+
+/* FAQ ICON */
+
+.faq-icon {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.faq-icon::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    width: 9px;
+    height: 9px;
+    border-right: 5px solid #111;
+    border-bottom: 5px solid #111;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    transition: 0.3s ease;
+}
+
+.faq-item[open] .faq-icon {
+    background: #ff6a00;
+}
+
+.faq-item[open] .faq-icon::before {
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.faq-item[open] summary {
+    padding-bottom: 20px;
+}
+
+
+.help-section {
+    background: #000;
+    padding: 80px 20px 100px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+}
+
+.help-container {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.help-title {
+    font-size: 65px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 22px;
+    letter-spacing: -2px;
+}
+
+.help-title span {
+    color: #ff6a00;
+}
+
+.help-subtitle {
+    color: #8d8d8d;
+    font-size: 19px;
+    line-height: 1.55;
+    margin: 0 auto 38px;
+    font-weight: 400;
+}
+
+.help-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(280px, 90%, 462px);
+    max-width: 100%;
+    height: 57px;
+    background: #ff6a00;
+    color: #000;
+    border-radius: 9px;
+    text-decoration: none;
+    font-size: clamp(16px, 3vw, 20px);
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    transition: 0.3s ease;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.help-btn:hover {
+    background: #20c918;
+    transform: translateY(-2px);
+}
+
+
+.footer {
+    background: #000;
+    color: #888;
+    text-align: center;
+    padding: 20px 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 100px;
+}
+
+.footer p {
+    margin: 0;
+}
+   
+
+html {
+    scroll-behavior: smooth;
+}
+
+#benefits {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+#process {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+#pricing {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+#testimonials {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+#faq {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+#contact-section {
+    scroll-margin-top: 200px; /* adjust based on navbar height */
+}
+
+.contact-section {
+   
+    background: #000;
+    padding: 80px 20px 100px;
+}
+
+
+.contact-container {
+    max-width: 950px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-title {
+    font-size: 72px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.contact-subtitle {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #8c8c8c;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.contact-form-box {
+    background: #171717;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 35px 26px 40px;
+    text-align: left;
+
+    width: 100%;
+    overflow: hidden;
+}
+
+.contact-form-box label {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+}
+
+.contact-form-box input,
+.contact-form-box textarea {
+    width: 100%;
+    padding: 18px 20px;
+    margin-bottom: 26px;
+    border-radius: 16px;
+    border: 1px solid #cfcfcf;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    font-family: "Montserrat", sans-serif;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.contact-form-box textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.contact-form-box input:focus,
+.contact-form-box textarea:focus {
+    border-color: #ff6a00;
+}
+
+.submit-btn {
+    display: block;
+    margin: 10px auto 0;
+    background: #ff6a00;
+    color: #000;
+    border: none;
+    padding: 16px 60px;
+    font-size: 24px;
+    font-weight: 700;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-family: "Montserrat", sans-serif;
+    word-wrap: break-word;
+}
+
+.disclaimer {
+    background: #141414; /* dark blue/black */
+    color: #e2e8f0;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.disclaimer .title {
+    font-size: 50px;
+    font-weight: 700;
+    color: #ff6a00; /* green highlight */
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.disclaimer p {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #cbd5f5;
+    text-align: left;
+    background: #020617;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #ff6a00;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* HAMBURGER */
+.menu-toggle {
+    display: none;
+    font-size: 34px;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 20px;
+    z-index: 2000;
+    position: relative;
+    line-height: 1;
+}
+
+/* MOBILE MENU */
+.mobile-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+}
+.top {
+    z-index: 1001;                /* stays ABOVE mobile menu */
+}
+/* SHOW MENU */
+.mobile-menu.active {
+    transform: translateY(0);
+}
+
+/* TOP BAR IN MENU */
+.mobile-top {
+    position: 20px;
+    top: 57px;
+    
+    right: 20px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mobile-logo {
+    height: 117px;
+}
+
+#close-menu{
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    z-index: 9999;
+    position: relative;
+}
+
+/* LINKS */
+.mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: center;
+}
+
+.mobile-links a {
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+.mobile-links a {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards;
+}
+
+
+
+.mobile-links a:nth-child(1) { animation-delay: 0.1s; }
+.mobile-links a:nth-child(2) { animation-delay: 0.2s; }
+.mobile-links a:nth-child(3) { animation-delay: 0.3s; }
+.mobile-links a:nth-child(4) { animation-delay: 0.4s; }
+.mobile-links a:nth-child(5) { animation-delay: 0.5s; }
+.mobile-links a:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1024px) {
+    .navbar {
+        width: calc(100% - 24px);
+        border-radius: 30px;
+        padding: 12px 16px;
+        top: 68px;
+    }
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 42px;
+        margin-right: 0;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+    .logo img {
+        max-width: 75px;
+    }
+    .join-btn {
+        padding: 12px 22px;
+        font-size: 0.95rem !important;
+    }
+    .content {
+        margin-top: 13rem;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+    .para {
+        margin-top: 0rem;
+    }
+    .para p {
+        font-size: 0.98rem;
+    }
+    .para a {
+        padding: 12px 27px;
+        width: auto;
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .benefits strong {
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+    }
+    .title {
+        font-size: clamp(3rem, 4vw, 5.5rem);
+    }
+    .card1 {
+        width: 100%;
+    }
+    .progress-para p {
+        text-align: center;
+    }
+    .progress-spot {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .progress-spot a {
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .card0 {
+        width: clamp(280px, 85%, 450px);
+    }
+    .proof-title {
+        font-size: clamp(3.5rem, 4vw, 3.5rem);
+    }
+    .cta-title {
+        font-size: clamp(2rem, 6vw, 4.5rem);
+    }
+    .faq-title {
+        font-size: clamp(2rem, 6vw, 4.5rem);
+    }
+    .help-title {
+        font-size: clamp(2rem, 6vw, 4.5rem);
+    }
+    .help-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .timeline {
+    position: relative;
+    padding-left: 45px;
+}
+
+
+
+.timeline-card {
+    position: relative;
+    z-index: 2;
+     width: calc(100% - 20px);
+    margin-left: 10px;
+}
+
+    .navbar {
+        width: 100%;
+        top: 60px;
+        padding: 12px 18px;
+        border-radius: 0;
+        overflow: visible;
+    }
+
+    .logo img {
+        max-width: 65px;
+    }
+
+    .join-btn {
+        padding: 10px 18px;
+        margin-left: 0;
+    }
+
+    .content {
+        width: 100%;
+        margin-top: 14rem;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .video {
+        width: 100%;
+        min-height: 50vh;
+        margin: 1.5rem auto 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .para {
+        width: 100%;
+        margin: 1.5rem auto 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .para p {
+        font-size: 0.96rem;
+    }
+
+    .para a {
+        display: inline-block;
+        padding: 10px 24px;
+        margin: 1rem auto 0;
+        width: auto;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 16px;
+    }
+
+    .para .con {
+        font-size: 0.95rem;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        margin: 15px auto 0;
+        padding: 0 20px;
+        max-width: 100%;
+        box-sizing: border-box;
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .benefits strong {
+        font-size: 32px;
+        display: block;
+        margin-left: 0;
+    }
+
+    .title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .timeline {
+        margin-left: 0;
+        padding-left: 30px;
+    }
+
+    .card1 {
+        width: 100%;
+        margin: 0 auto 40px;
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .number {
+        font-size: 80px;
+    }
+
+    .progress-content h2 {
+        font-size: 20px;
+    }
+
+    .progress-content p {
+        font-size: 0.95rem;
+    }
+
+    .progress-para p {
+        margin-left: 0;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+
+    .progress-spot {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .progress-spot a {
+        font-size: 18px;
+        padding: 12px 35px;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .pricing-section .title {
+        margin-bottom: 0;
+    }
+
+    .pricing-section .subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .pricing-cards {
+        padding: 40px 20px 10px;
+    }
+
+    .card0 {
+        width: clamp(280px, 90%, 400px);
+    }
+
+    .proof-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .proof-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .proof-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cta-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .cta-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .faq-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .faq-item {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .faq-item summary {
+        padding: 15px 20px;
+        font-size: clamp(16px, 3vw, 20px);
+    }
+
+    .faq-item p {
+        padding: 0 20px 20px 20px;
+        font-size: 16px;
+    }
+
+    .submit-btn {
+        margin: 10px auto 10px;
+    }
+
+    .help-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .help-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .help-btn {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    .contact-title {
+        font-size: clamp(2rem, 6vw, 4.5rem);
+    }
+
+    .contact-subtitle {
+        font-size: 0.95rem;
+    }
+
+    .contact-form-box {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .disclaimer {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .navbar {
+        top: 100px;
+        border-radius: 0;
+        width: 100%;
+        padding: 10px 12px;
+    }
+
+    .content {
+        width: 100%;
+        margin-top: 12rem;
+        font-size: clamp(1.5rem, 7vw, 2.5rem);
+        line-height: 1.2;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .video {
+        width: 100%;
+        min-height: 45vh;
+        margin: 1rem auto 0;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    #bg-video {
+        top: 0;
+    }
+
+    .para p {
+        font-size: 0.9rem;
+        margin-top: 0;
+    }
+
+    .para a {
+        display: inline-block;
+        width: auto;
+        max-width: 280px;
+        margin: 1rem auto 0;
+        padding: 12px 20px;
+        font-size: 16px;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .marquee-wrapper {
+        padding: 30px 0;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        margin: 15px auto 0;
+        padding: 0 15px;
+        max-width: 100%;
+        box-sizing: border-box;
+        gap: 15px;
+    }
+
+    .benefits strong {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .card {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .card img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .card h3 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .process-section {
+        width: 100%;
+        padding: 40px 15px;
+    }
+
+
+
+    .card1 {
+        width: 100%;
+        margin: 0 auto 30px;
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 15px;
+    }
+
+    .number {
+        font-size: 60px;
+    }
+
+    .progress-content h2 {
+        font-size: 18px;
+    }
+
+    .progress-content p {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    .progress-para p {
+        margin-left: 0;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .progress-spot {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+    }
+
+    .progress-spot a {
+        font-size: 14px;
+        padding: 12px 20px;
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .pricing-section .title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 0;
+    }
+
+    .pricing-section .subtitle {
+        font-size: 14px;
+        margin-bottom: 15px;
+        padding: 0 15px;
+    }
+
+    .pricing-cards {
+        padding: 30px 15px 10px;
+        gap: 20px;
+    }
+
+    .card0 {
+        width: 100%;
+        max-width: 350px;
+        min-width: 0;
+        padding: 30px 20px 20px;
+    }
+
+    .card0 h3 {
+        font-size: 18px;
+    }
+
+    .card0 h1 {
+        font-size: 40px;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+
+    ul li {
+        font-size: 14px;
+        padding-left: 30px;
+    }
+
+    .plan-badge {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+
+    .proof-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: center;
+    }
+
+    .proof-subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    .proof-cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 15px;
+    }
+
+    .proof-card {
+        padding: 25px 15px 20px;
+    }
+
+    .proof-user h3 {
+        font-size: 20px;
+    }
+
+    .proof-user p {
+        font-size: 16px;
+    }
+
+    .proof-text {
+        font-size: 14px;
+    }
+
+    .cta-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: center;
+    }
+
+    .cta-subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 260px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .faq-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    .faq-list {
+        padding: 0 15px;
+        max-width: 100%;
+    }
+
+    .faq-item {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .faq-item summary {
+        padding: 15px 15px;
+        font-size: clamp(14px, 4vw, 16px);
+        min-height: 60px;
+    }
+
+    .faq-item p {
+        padding: 0 15px 20px 15px;
+        font-size: 14px;
+    }
+
+    .faq-icon {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+    }
+
+    .help-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: center;
+    }
+
+    .help-subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    .help-btn {
+        width: 100%;
+        max-width: 260px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .contact-title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        text-align: center;
+    }
+
+    .contact-subtitle {
+        font-size: 14px;
+        padding: 0 15px;
+    }
+
+    .contact-form-box {
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px 15px;
+        box-sizing: border-box;
+    }
+
+    .contact-form-box label {
+        font-size: 16px;
+        margin-top: 0;
+    }
+
+    .contact-form-box input,
+    .contact-form-box textarea {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        margin: 15px auto 0;
+    }
+
+    .disclaimer {
+        padding: 30px 15px;
+    }
+
+    .disclaimer .title {
+        font-size: 20px;
+    }
+
+    .disclaimer p {
+        font-size: 13px;
+        padding: 20px;
+    }
+    .timeline {
+    padding-left: 40px;
+    position: relative;
+    }
+
+    .progress-line {
+    display: block;
+    position: absolute;
+    left: 14px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #222;
+    border-radius: 10px;
+    }
+
+    .progress {
+    width: 100%;
+    background: #ff6a00;
+    border-radius: 10px;
+    }
+}
+img,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+section {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
