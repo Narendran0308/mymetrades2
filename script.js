@@ -29,12 +29,41 @@ const observer = new IntersectionObserver(function(entries) {
     });
 }, observerOptions);
 
+// ✨ NAVBAR ACTIVE LINK HIGHLIGHTING ON SCROLL
+const navObserverOptions = {
+    threshold: 0.5
+};
+
+const navObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        const id = entry.target.id;
+        const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+        
+        if (entry.isIntersecting) {
+            // Remove active class from all nav links
+            document.querySelectorAll(".nav-links a").forEach(link => {
+                link.classList.remove("active");
+            });
+            // Add active class to current section's link
+            if (navLink) {
+                navLink.classList.add("active");
+            }
+        }
+    });
+}, navObserverOptions);
+
 document.addEventListener("DOMContentLoaded", function () {
     // Add scroll-fade class to all cards and sections
     const cardsAndSections = document.querySelectorAll(".card, .card1, .benefits-section, .process-section, .testimonials-section, .faq-section");
     cardsAndSections.forEach(el => {
         el.classList.add("scroll-fade");
         observer.observe(el);
+    });
+
+    // Observe sections for navbar highlighting
+    const sections = document.querySelectorAll("#benefits, #process, #pricing, #testimonials, #faq, #contact-section");
+    sections.forEach(section => {
+        navObserver.observe(section);
     });
 
     // FAQ section

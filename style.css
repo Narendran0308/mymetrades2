@@ -155,6 +155,15 @@ p {
     width: 100%;
 }
 
+/* Active nav link highlight */
+.nav-links a.active:not(.join-btn) {
+    color: #ff6a00;
+}
+
+.nav-links a.active:not(.join-btn)::after {
+    width: 100%;
+}
+
 .join-btn {
     padding: 14px 26px;
     border: none;
