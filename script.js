@@ -14,10 +14,31 @@ window.addEventListener("scroll", function () {
     progress.style.height = progressHeight + "%";
 });
 
-   //faq section 
+// ✨ SCROLL FADE-IN ANIMATION WITH INTERSECTION OBSERVER
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
 
-const faqItems = document.querySelectorAll(".faq-item");
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
 
+document.addEventListener("DOMContentLoaded", function () {
+    // Add scroll-fade class to all cards and sections
+    const cardsAndSections = document.querySelectorAll(".card, .card1, .benefits-section, .process-section, .testimonials-section, .faq-section");
+    cardsAndSections.forEach(el => {
+        el.classList.add("scroll-fade");
+        observer.observe(el);
+    });
+
+    // FAQ section
+    const faqItems = document.querySelectorAll(".faq-item");
     faqItems.forEach((item) => {
         item.addEventListener("toggle", () => {
             if (item.open) {
@@ -30,40 +51,41 @@ const faqItems = document.querySelectorAll(".faq-item");
         });
     });
 
-
-   
-document.addEventListener("DOMContentLoaded", function () {
-
+    // Mobile menu functionality
     const menuBtn = document.getElementById("menu-toggle");
     const closeBtn = document.getElementById("close-menu");
     const mobileMenu = document.getElementById("mobile-menu");
 
+    if (mobileMenu) {
         // Close menu when clicking nav links
-    const navLinks = mobileMenu.querySelectorAll("a");
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            mobileMenu.classList.remove("active");
+        const navLinks = mobileMenu.querySelectorAll("a");
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+            });
         });
-    });
 
-    // Open menu
-    menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
-    });
-
-    // Close menu
-    closeBtn.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-    });
-
-    // 🔥 FIX: Reset when resizing to desktop
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 768) {
-            mobileMenu.classList.remove("active");
+        // Open menu
+        if (menuBtn) {
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.add("active");
+            });
         }
-    });
 
+        // Close menu
+        if (closeBtn) {
+            closeBtn.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+            });
+        }
+
+        // Reset when resizing to desktop
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 768) {
+                mobileMenu.classList.remove("active");
+            }
+        });
+    }
 });
 
 
