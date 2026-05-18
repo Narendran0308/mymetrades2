@@ -1,4 +1,5 @@
 
+// ✨ NAVBAR ACTIVE LINK HIGHLIGHTING ON SCROLL
 window.addEventListener("scroll", function () {
     const timeline = document.querySelector(".timeline");
     const progress = document.querySelector(".progress");
@@ -12,47 +13,73 @@ window.addEventListener("scroll", function () {
     if (progressHeight > 100) progressHeight = 100;
 
     progress.style.height = progressHeight + "%";
+
+    // Update active navbar link on scroll
+    updateActiveNavLink();
 });
 
-// ✨ SCROLL FADE-IN ANIMATION WITH INTERSECTION OBSERVER
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-};
+function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 150; // Offset for navbar
+    let activeLink = null;
 
-const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-        }
+    // Get all nav links
+    const navLinks = document.querySelectorAll(".nav-links a:not(.join-btn)");
+    
+    // Reset all active classes
+    navLinks.forEach(link => {
+        link.classList.remove("active");
     });
-}, observerOptions);
 
-// ✨ NAVBAR ACTIVE LINK HIGHLIGHTING ON SCROLL
-const navObserverOptions = {
-    threshold: 0.5
-};
+    // Check each section
+    const sections = [
+        { id: "benefits", href: "#benefits" },
+        { id: "process", href: "#process" },
+        { id: "pricing", href: "#pricing" },
+        { id: "testimonials", href: "#testimonials" },
+        { id: "faq", href: "#faq" },
+        { id: "contact-section", href: "#contact-section" }
+    ];
 
-const navObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(entry => {
-        const id = entry.target.id;
-        const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-        
-        if (entry.isIntersecting) {
-            // Remove active class from all nav links
-            document.querySelectorAll(".nav-links a").forEach(link => {
-                link.classList.remove("active");
-            });
-            // Add active class to current section's link
-            if (navLink) {
-                navLink.classList.add("active");
+    for (let section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+            const elementTop = element.offsetTop;
+            const elementBottom = elementTop + element.offsetHeight;
+
+            if (scrollPosition >= elementTop && scrollPosition < elementBottom) {
+                activeLink = document.querySelector(`.nav-links a[href="${section.href}"]`);
+                break;
             }
         }
-    });
-}, navObserverOptions);
+    }
+
+    // If no section is active, highlight Home (when at top)
+    if (!activeLink && scrollPosition < 500) {
+        activeLink = document.querySelector('.nav-links a[href="#"]');
+    }
+
+    // Apply active class
+    if (activeLink) {
+        activeLink.classList.add("active");
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    // ✨ SCROLL FADE-IN ANIMATION WITH INTERSECTION OBSERVER
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
     // Add scroll-fade class to all cards and sections
     const cardsAndSections = document.querySelectorAll(".card, .card1, .benefits-section, .process-section, .testimonials-section, .faq-section");
     cardsAndSections.forEach(el => {
@@ -60,11 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(el);
     });
 
-    // Observe sections for navbar highlighting
-    const sections = document.querySelectorAll("#benefits, #process, #pricing, #testimonials, #faq, #contact-section");
-    sections.forEach(section => {
-        navObserver.observe(section);
-    });
+    // Update active nav link on page load
+    updateActiveNavLink();
 
     // FAQ section
     const faqItems = document.querySelectorAll(".faq-item");

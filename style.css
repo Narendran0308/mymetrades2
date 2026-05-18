@@ -155,13 +155,18 @@ p {
     width: 100%;
 }
 
-/* Active nav link highlight */
+/* Active nav link highlight - Full background pill effect */
 .nav-links a.active:not(.join-btn) {
-    color: #ff6a00;
+    color: #000 !important;
+    background-color: #ff6a00;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .nav-links a.active:not(.join-btn)::after {
-    width: 100%;
+    display: none;
 }
 
 .join-btn {
